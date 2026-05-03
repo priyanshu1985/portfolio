@@ -1,6 +1,7 @@
 import React from 'react';
 import { Mail, Github, Linkedin, ArrowRight, MessageSquare, ExternalLink } from 'lucide-react';
 import { Reveal } from '../animations/Reveal';
+import resume from '../../assets/PriyanshuMankeResumeSE.pdf';
 
 const Contact = () => {
   return (
@@ -8,9 +9,9 @@ const Contact = () => {
       <div className="container-inset">
         
         {/* Contact Panel */}
-        <div className="panel-inset bg-background-alt border-white/5 relative overflow-hidden text-center py-24 px-10 space-y-10">
-          {/* Decorative Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-teal-accent/30 to-transparent" />
+        <div className="panel-inset bg-surface-med border-border shadow-2xl shadow-foreground/5 relative overflow-hidden text-center py-28 px-10 space-y-16">
+          {/* Decorative Gradient Line */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
           
           <div className="space-y-6 relative z-10">
             <Reveal>
@@ -20,37 +21,41 @@ const Contact = () => {
               </div>
             </Reveal>
             <Reveal delay={0.2}>
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight max-w-3xl mx-auto">
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight max-w-3xl mx-auto text-foreground">
                 Ready to contribute to your <br />
-                <span className="text-neutral-500">engineering team.</span>
+                <span className="text-muted-foreground">engineering team.</span>
               </h2>
             </Reveal>
             <Reveal delay={0.4}>
-              <p className="text-neutral-400 text-lg md:text-xl max-w-xl mx-auto">
+              <p className="text-description text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
                 I am actively seeking internship and full-time roles where I can apply my full-stack skills and learn from world-class engineers.
               </p>
             </Reveal>
           </div>
 
           <Reveal delay={0.6}>
-            <div className="flex flex-col items-center gap-10">
+            <div className="flex flex-col items-center gap-12">
               <a 
                 href="mailto:mankepriyanshu19@gmail.com" 
-                className="btn-hiring-primary h-16 px-12 text-lg shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+                className="btn-hiring-primary h-16 px-12 text-lg shadow-xl shadow-primary/20"
               >
-                Send Message <ArrowRight size={20} />
+                Send Message <ArrowRight size={22} />
               </a>
 
               {/* Social Grid */}
-              <div className="flex flex-wrap items-center justify-center gap-10 pt-8 border-t border-white/5 w-full max-w-lg">
-                <a href="https://github.com/priyanshu1985" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-500 hover:text-white transition-colors">
-                  <Github size={16} /> GitHub
+              <div className="flex flex-wrap items-center justify-center gap-10 pt-12 border-t border-border w-full max-w-lg">
+                <a href="https://github.com/priyanshu1985" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-label font-black hover:text-primary transition-colors">
+                  <Github size={20} /> GITHUB
                 </a>
-                <a href="https://www.linkedin.com/in/priyanshu-manke-pm19/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-500 hover:text-white transition-colors">
-                  <Linkedin size={16} /> LinkedIn
+                <a href="https://www.linkedin.com/in/priyanshu-manke-pm19/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-label font-black hover:text-primary transition-colors">
+                  <Linkedin size={20} /> LINKEDIN
                 </a>
-                <a href="#" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-500 hover:text-white transition-colors">
-                  <ExternalLink size={16} /> Resume
+                 <a 
+                  href={resume} 
+                  download="PriyanshuManke_Resume.pdf"
+                  className="flex items-center gap-2 text-label font-black hover:text-primary transition-colors"
+                >
+                  <ExternalLink size={20} /> RESUME
                 </a>
               </div>
             </div>
@@ -58,11 +63,11 @@ const Contact = () => {
         </div>
 
         {/* Minimal Quiet Footer */}
-        <div className="pt-24 flex flex-col md:flex-row items-center justify-between gap-8 opacity-20 text-[10px] uppercase tracking-[0.4em] font-mono font-bold">
-          <div>© 2025 Priyanshu Manke</div>
-          <div className="flex gap-8">
+        <div className="pt-24 pb-12 flex flex-col md:flex-row items-center justify-between gap-8 text-label opacity-60">
+          <div className="font-bold">© 2025 Priyanshu Manke</div>
+          <div className="flex gap-10 font-bold">
             <span>Built with React + Node</span>
-            <span>V0.9.4-Stable</span>
+            <span className="text-primary italic">V1.0.0-Stable</span>
           </div>
         </div>
 

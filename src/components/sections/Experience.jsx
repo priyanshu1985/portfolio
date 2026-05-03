@@ -1,37 +1,28 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Reveal } from '../animations/Reveal';
-import { Briefcase, Calendar, Star, Award, Zap } from 'lucide-react';
+import { Briefcase, Calendar, Star, Award, Zap, ChevronRight } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
     {
       title: 'Full Stack Developer Intern',
-      company: 'TechFlow Systems',
-      period: 'Jan 2024 - Present',
+      company: 'Early Stage Product Startup',
+      period: 'Sept 2025 - Present',
       bullets: [
-        'Architected a microservices-based analytics dashboard using Node.js and MongoDB.',
-        'Optimized database query performance by 40% through strategic indexing and schema refactoring.',
-        'Collaborated with senior engineers to implement CI/CD pipelines using GitHub Actions.'
+        'Developing and maintaining a MERN-based full-stack application using React.js, Node.js, and MongoDB.',
+        'Implemented stateless JWT authentication with role-based access control, reducing unauthorized access incidents.',
+        'Optimized Supabase schema design and indexing strategies, reducing average API response time by 66%.',
+        'Architected modular backend following MVC pattern and REST principles for improved maintainability.'
       ],
-      impact: 'Improving data throughput for 1k+ concurrent users.'
-    },
-    {
-      title: 'Web Development Lead',
-      company: 'Developer Student Club',
-      period: 'Aug 2022 - Sept 2023',
-      bullets: [
-        'Mentored a team of 15+ junior developers in building responsive React applications.',
-        'Spearheaded the development of the official campus portal, serving 5k+ students.',
-        'Standardized the community code-review process to improve overall project quality.'
-      ],
-      impact: 'Shipped 3 production-level internal tools.'
+      impact: 'Improving session validation latency by 25%.'
     }
   ];
 
   const milestones = [
-    { label: 'Global Rank', value: 'Top 5%', desc: 'Hacktoberfest 2023 Contributor', icon: Award },
-    { label: 'Academic', value: '8.5/10', desc: 'B.Tech Software Engineering', icon: Star },
-    { label: 'Community', value: '500+', desc: 'Developers Mentored', icon: Zap },
+    { label: 'Recognition', value: 'SIH 2025', desc: 'Smart India Hackathon Grand Finale Selection', icon: Award },
+    { label: 'Academic', value: 'BE AI & DS', desc: 'Ajeenkya D Y Patil School of Engineering', icon: Star },
+    { label: 'Innovation', value: '1st Prize', desc: 'Won first prize in Alcohol Sensor project competition', icon: Zap },
   ];
 
   return (
@@ -44,48 +35,58 @@ const Experience = () => {
           <div className="max-w-2xl space-y-4">
             <Reveal>
               <div className="flex items-center gap-3 text-label">
-                <Briefcase size={14} />
+                <Briefcase size={14} className="text-primary" />
                 Trajectory
               </div>
             </Reveal>
             <Reveal delay={0.2}>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-                Career & <br />
-                <span className="text-neutral-500">Execution.</span>
+              <h2 className="text-4xl md:text-6xl font-bold tracking-tight leading-[0.95]">
+                Execution & <br />
+                <span className="text-muted-foreground">Impact.</span>
               </h2>
             </Reveal>
           </div>
 
           {/* Timeline */}
-          <div className="relative space-y-16">
+          <div className="relative space-y-16 before:absolute before:left-[11px] md:before:left-[calc(25%-5.5rem)] before:top-0 before:bottom-0 before:w-[1px] before:bg-border/60">
             {experiences.map((exp, i) => (
               <Reveal key={exp.title} delay={0.2}>
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 relative group/exp">
                   {/* Date Rail */}
                   <div className="md:col-span-3">
-                    <div className="flex items-center gap-3 text-xs font-bold text-teal-accent uppercase tracking-[0.2em] mb-2">
-                      <Calendar size={14} />
+                    <motion.div 
+                      whileHover={{ x: 5 }}
+                      className="flex items-center gap-3 text-[11px] font-black text-primary uppercase tracking-[0.3em] mb-4"
+                    >
+                      <div className="w-3 h-3 rounded-full bg-background border-2 border-primary z-10 group-hover/exp:scale-125 transition-transform" />
                       {exp.period}
-                    </div>
-                    <div className="text-lg font-bold text-white">{exp.company}</div>
+                    </motion.div>
+                    <div className="text-2xl font-black text-foreground pl-6 md:pl-0 tracking-tighter">{exp.company}</div>
                   </div>
 
-                  {/* Impact Card */}
-                  <div className="md:col-span-9 panel-inset p-8 md:p-10 bg-black/40 hover:border-teal-accent/20 transition-all duration-500">
-                    <h3 className="text-2xl font-bold tracking-tight mb-6">{exp.title}</h3>
-                    <ul className="space-y-4 mb-8">
+                   {/* Impact Card */}
+                  <motion.div 
+                    whileHover={{ y: -5 }}
+                    className="md:col-span-9 panel-inset bg-surface-med/50 backdrop-blur-sm border-border shadow-2xl shadow-foreground/5 p-10 transition-all duration-700 hover:border-primary/20"
+                  >
+                    <h3 className="text-3xl font-black tracking-tighter mb-8 text-foreground">{exp.title}</h3>
+                    <ul className="space-y-6 mb-12">
                       {exp.bullets.map((bullet, idx) => (
-                        <li key={idx} className="flex gap-4 text-neutral-400 text-sm leading-relaxed">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-teal-accent flex-shrink-0" />
-                          {bullet}
+                        <li key={idx} className="flex gap-5 text-description text-sm leading-relaxed group/item">
+                          <ChevronRight size={14} className="mt-1 text-primary/40 group-hover/item:text-primary transition-colors" />
+                          <span className="group-hover/item:text-foreground transition-colors">{bullet}</span>
                         </li>
                       ))}
                     </ul>
-                    <div className="pt-6 border-t border-border-subtle flex items-center gap-3">
-                      <div className="text-[10px] uppercase tracking-widest text-neutral-600 font-bold">Key Impact:</div>
-                      <div className="text-xs font-medium text-neutral-200 italic">{exp.impact}</div>
+                    <div className="pt-8 border-t border-border/60 flex flex-col sm:flex-row sm:items-center gap-6">
+                      <div className="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/5 px-3 py-1 rounded-full border border-primary/10 w-fit">
+                        Core Result
+                      </div>
+                      <div className="text-sm font-bold text-foreground italic border-l-2 border-primary/30 pl-6 leading-relaxed">
+                        {exp.impact}
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </Reveal>
             ))}
@@ -96,23 +97,26 @@ const Experience = () => {
       {/* Achievements / Milestones Section */}
       <section className="section-rhythm-3">
         <div className="container-inset">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {milestones.map((ms, i) => (
-              <Reveal key={ms.label} delay={0.2 + (i * 0.1)}>
-                <div className="p-8 rounded-3xl border border-border-subtle bg-black hover:border-white/10 transition-all group">
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-xl bg-background-alt border border-border-subtle text-teal-accent">
-                      <ms.icon size={20} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+             {milestones.map((ms, i) => (
+              <Reveal key={ms.label} delay={0.1 * i}>
+                <motion.div 
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="p-10 rounded-3xl border border-border bg-surface-med/40 backdrop-blur-sm shadow-sm transition-all duration-700 group hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5"
+                >
+                  <div className="flex flex-col gap-8">
+                    <div className="p-4 rounded-2xl bg-muted border border-border text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-500 w-fit">
+                      <ms.icon size={26} />
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-white">{ms.value}</div>
-                      <div className="text-[10px] uppercase tracking-widest text-neutral-600 font-bold">{ms.label}</div>
+                      <div className="text-3xl font-black text-foreground tracking-tighter mb-2">{ms.value}</div>
+                      <div className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">{ms.label}</div>
                     </div>
                   </div>
-                  <div className="mt-4 text-xs text-neutral-500 font-medium leading-relaxed group-hover:text-neutral-400 transition-colors">
+                  <div className="mt-8 text-sm text-description group-hover:text-foreground transition-colors leading-relaxed font-medium">
                     {ms.desc}
                   </div>
-                </div>
+                </motion.div>
               </Reveal>
             ))}
           </div>

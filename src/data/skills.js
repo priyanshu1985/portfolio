@@ -1,36 +1,22 @@
-import { 
-  Code2, 
-  Database, 
-  Cloud, 
-  Terminal, 
-  ShieldCheck, 
-  Cpu 
-} from 'lucide-react';
-
-export const skills = [
+export const skillGroups = [
   {
-    category: "MERN Stack",
-    icon: Code2,
-    items: ["React.js", "Node.js", "Express.js", "MongoDB"]
+    category: "Frontend Development",
+    skills: ["JavaScript (ES6+)", "Python", "React.js", "HTML5/CSS3", "Responsive UI"]
   },
   {
-    category: "Backend & DB",
-    icon: Database,
-    items: ["MySQL", "REST APIs", "JWT Auth", "RBAC", "MVC Pattern"]
+    category: "Backend Development",
+    skills: ["Node.js", "Express.js", "REST APIs", "JWT Auth", "MVC Pattern"]
   },
   {
-    category: "Cloud & Devops",
-    icon: Cloud,
-    items: ["AWS (Hands-on)", "Azure (Ready)", "Google Cloud", "Vercel", "Render"]
+    category: "Databases & Cloud",
+    skills: ["MongoDB", "MySQL", "Supabase", "AWS", "Vercel/Render"]
   },
   {
-    category: "Tools & OS",
-    icon: Terminal,
-    items: ["Git/GitHub", "Postman", "n8n", "Linux", "Docker"]
+    category: "Tools & Automation",
+    skills: ["Git/GitHub", "Postman", "n8n", "Docker", "Linux"]
   },
   {
-    category: "Core CS",
-    icon: ShieldCheck,
-    items: ["Data Structures", "Algorithms", "DBMS", "OS", "System Design"]
+    category: "Core Engineering",
+    skills: ["Data Structures", "Algorithms", "OOP", "RBAC", "API Integration"]
   }
 ];

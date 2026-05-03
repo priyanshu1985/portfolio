@@ -3,48 +3,40 @@ import { motion, useInView, useAnimation } from 'framer-motion';
 
 export const Reveal = ({ children, width = "100%", delay = 0.25 }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const mainControls = useAnimation();
-  const slideControls = useAnimation();
 
   useEffect(() => {
     if (isInView) {
       mainControls.start("visible");
-      slideControls.start("visible");
     }
-  }, [isInView, mainControls, slideControls]);
+  }, [isInView, mainControls]);
 
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
+    <div ref={ref} style={{ position: "relative", width }}>
       <motion.div
         variants={{
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 1, y: 0 },
+          hidden: { 
+            opacity: 0, 
+            y: 20,
+            clipPath: "inset(100% 0 0 0)"
+          },
+          visible: { 
+            opacity: 1, 
+            y: 0,
+            clipPath: "inset(0% 0 0 0)"
+          },
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, delay }}
+        transition={{ 
+          duration: 0.6, 
+          delay, 
+          ease: [0.16, 1, 0.3, 1] 
+        }}
       >
         {children}
       </motion.div>
-      {/* <motion.div
-        variants={{
-          hidden: { left: 0 },
-          visible: { left: "100%" },
-        }}
-        initial="hidden"
-        animate={slideControls}
-        transition={{ duration: 0.5, ease: "easeIn" }}
-        style={{
-          position: "absolute",
-          top: 4,
-          bottom: 4,
-          left: 0,
-          right: 0,
-          background: "#ffffff",
-          zIndex: 20,
-        }}
-      /> */}
     </div>
   );
 };

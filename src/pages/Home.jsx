@@ -9,7 +9,7 @@ import Contact from '../components/sections/Contact';
 
 const Home = () => {
   return (
-    <div className="bg-background min-h-screen text-white scroll-smooth selection:bg-teal-accent/30 selection:text-white">
+    <div className="bg-background min-h-screen scroll-smooth">
       <Navbar />
       
       <main className="relative">
