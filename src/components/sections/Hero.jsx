@@ -1,9 +1,11 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Reveal } from '../animations/Reveal';
 import { Counter } from '../common/Counter';
 import { Github, FileText, ArrowRight, Terminal, Cpu, Database, ShieldCheck, Activity } from 'lucide-react';
 import resume from '../../assets/PriyanshuMankeResumeSE.pdf';
+import photo1 from '../../assets/photo1.jpeg';
+import photo2 from '../../assets/photo2.jpeg';
 
 export const Hero = () => {
   const containerVariants = {
@@ -26,6 +28,23 @@ export const Hero = () => {
     }
   };
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [
+    { type: 'tech' },
+    { type: 'image', src: photo1 },
+    { type: 'image', src: photo2 },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+
   return (
     <section id="home" className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
       {/* Premium Technical Grid Background */}
@@ -43,7 +62,7 @@ export const Hero = () => {
         />
       </div>
 
-      <div className="container-inset relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+      <div className="container-inset relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
         {/* Left Content: The Engineering Identity */}
         <motion.div 
@@ -55,10 +74,10 @@ export const Hero = () => {
           <div className="space-y-6">
             <motion.div variants={itemVariants} className="flex items-center gap-3 text-primary">
               <div className="h-px w-8 bg-primary/30" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em]">Systems & Full-Stack Architecture</span>
+              <span className="text-xs font-black uppercase tracking-[0.4em]">Systems & Full-Stack Architecture</span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] text-foreground">
+            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1] pb-2 text-foreground">
               Building <br />
               <span className="text-muted-foreground">Production</span> <br />
               Infrastructure.
@@ -90,19 +109,19 @@ export const Hero = () => {
               <div className="text-foreground font-black text-2xl tracking-tighter">
                 <Counter value={1} /> Internship
               </div>
-              <div className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">Current Status</div>
+              <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">Current Status</div>
             </div>
             <div className="space-y-1">
               <div className="text-foreground font-black text-2xl tracking-tighter">
                 <Counter value={15} />+ Projects
               </div>
-              <div className="text-[9px] font-black uppercase tracking-widest text-muted-foreground">Shipped & Deployed</div>
+              <div className="text-xs font-black uppercase tracking-widest text-muted-foreground">Shipped & Deployed</div>
             </div>
             <div className="space-y-1 text-primary">
               <div className="font-black text-2xl tracking-tighter flex items-center gap-2">
                 <ShieldCheck size={20} /> 100%
               </div>
-              <div className="text-[9px] font-black uppercase tracking-widest text-primary/60">Quality Audit</div>
+              <div className="text-xs font-black uppercase tracking-widest text-primary/60">Quality Audit</div>
             </div>
           </motion.div>
         </motion.div>
@@ -114,7 +133,7 @@ export const Hero = () => {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
           className="lg:col-span-5 relative"
         >
-          <div className="panel-inset bg-surface-med/40 backdrop-blur-xl border-border/60 shadow-2xl shadow-primary/5 p-1 relative z-10 overflow-hidden group">
+          <div className="panel-inset bg-surface-med/40 backdrop-blur-xl border-border/60 shadow-2xl shadow-primary/5 p-1 relative z-10 overflow-hidden group min-h-[500px] flex flex-col">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
             
             {/* Animated "Scan Line" */}
@@ -124,70 +143,100 @@ export const Hero = () => {
               className="absolute left-0 right-0 h-px bg-primary/10 z-20 pointer-events-none"
             />
 
-            <div className="relative p-8 space-y-10">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-500">
-                    <Terminal size={22} />
-                  </div>
-                  <div className="text-[10px] font-mono font-bold text-muted-foreground uppercase tracking-tighter">dev_ops.sys</div>
-                </div>
-                <div className="flex gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-border" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-border" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-primary/40" />
-                </div>
-              </div>
-
-              {/* Operational Logic Bars */}
-              <div className="space-y-6">
-                <div className="space-y-3">
-                   <div className="flex justify-between items-end">
-                      <div className="text-[10px] font-black text-foreground uppercase tracking-widest flex items-center gap-2">
-                        <Cpu size={14} className="text-primary" /> Architecture Maturity
+            <div className="relative flex-1">
+              <AnimatePresence mode="wait">
+                {currentSlide === 0 ? (
+                  <motion.div 
+                    key="tech-card"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    className="p-8 space-y-10"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-500">
+                        <Terminal size={22} />
                       </div>
-                      <span className="text-[10px] font-mono text-primary font-bold">STABLE</span>
+                      <div className="text-xs font-mono font-bold text-muted-foreground uppercase tracking-tight">dev_ops.sys</div>
                     </div>
-                    <div className="h-1 bg-muted rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }} 
-                        animate={{ width: "94%" }} 
-                        transition={{ delay: 1.2, duration: 2, ease: [0.16, 1, 0.3, 1] }} 
-                        className="h-full bg-primary" 
-                      />
-                    </div>
-                </div>
 
-                <div className="space-y-3">
-                   <div className="flex justify-between items-end">
-                      <div className="text-[10px] font-black text-foreground uppercase tracking-widest flex items-center gap-2">
-                        <Database size={14} className="text-primary" /> Data Integrity
+                    <div className="space-y-6">
+                      <div className="space-y-3">
+                         <div className="flex justify-between items-end">
+                            <div className="text-xs font-black text-foreground uppercase tracking-widest flex items-center gap-2">
+                              <Cpu size={14} className="text-primary" /> Architecture Maturity
+                            </div>
+                            <span className="text-xs font-mono text-primary font-bold">STABLE</span>
+                          </div>
+                          <div className="h-1 bg-muted rounded-full overflow-hidden">
+                            <motion.div 
+                              initial={{ width: 0 }} 
+                              animate={{ width: "94%" }} 
+                              transition={{ delay: 0.2, duration: 1.5, ease: [0.16, 1, 0.3, 1] }} 
+                              className="h-full bg-primary" 
+                            />
+                          </div>
                       </div>
-                      <span className="text-[10px] font-mono text-primary font-bold">98.2%</span>
-                    </div>
-                    <div className="h-1 bg-muted rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }} 
-                        animate={{ width: "98.2%" }} 
-                        transition={{ delay: 1.4, duration: 2, ease: [0.16, 1, 0.3, 1] }} 
-                        className="h-full bg-primary/40" 
-                      />
-                    </div>
-                </div>
-              </div>
 
-              {/* Tech Stack Matrix */}
-              <div className="pt-8 border-t border-border/60">
-                <div className="text-[9px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-5">Core Tech Stack</div>
-                <div className="grid grid-cols-2 gap-4">
-                  {['React / Next.js', 'Node / Express', 'MongoDB / SQL', 'GCP / Firebase'].map(tech => (
-                    <div key={tech} className="px-4 py-3 rounded-xl bg-surface-high border border-border text-[10px] font-black text-foreground flex items-center gap-3 hover:border-primary/30 hover:bg-muted transition-all duration-300">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
-                      {tech}
+                      <div className="space-y-3">
+                         <div className="flex justify-between items-end">
+                            <div className="text-xs font-black text-foreground uppercase tracking-widest flex items-center gap-2">
+                              <Database size={14} className="text-primary" /> Data Integrity
+                            </div>
+                            <span className="text-xs font-mono text-primary font-bold">98.2%</span>
+                          </div>
+                          <div className="h-1 bg-muted rounded-full overflow-hidden">
+                            <motion.div 
+                              initial={{ width: 0 }} 
+                              animate={{ width: "98.2%" }} 
+                              transition={{ delay: 0.4, duration: 1.5, ease: [0.16, 1, 0.3, 1] }} 
+                              className="h-full bg-primary/40" 
+                            />
+                          </div>
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
+
+                    <div className="pt-8 border-t border-border/60">
+                      <div className="text-xs font-black uppercase tracking-[0.3em] text-muted-foreground mb-5">Core Tech Stack</div>
+                      <div className="grid grid-cols-2 gap-4">
+                        {['React / Next.js', 'Node / Express', 'MongoDB / SQL', 'GCP / Firebase'].map(tech => (
+                          <div key={tech} className="px-4 py-3 rounded-xl bg-surface-high border border-border text-xs font-black text-foreground flex items-center gap-3 hover:border-primary/30 hover:bg-muted transition-all duration-300">
+                            <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+                            {tech}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div 
+                    key={`slide-${currentSlide}`}
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute inset-0 p-2"
+                  >
+                    <div className="w-full h-full relative rounded-2xl overflow-hidden shadow-2xl">
+                       {slides[currentSlide]?.src && (
+                         <img 
+                          src={slides[currentSlide].src} 
+                          alt={`Priyanshu Manke Slide ${currentSlide}`} 
+                          className="w-full h-full object-cover"
+                        />
+                       )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
+                      <div className="absolute bottom-6 left-6 right-6">
+                        <div className="flex items-center gap-3">
+                          <div className="h-px w-8 bg-primary" />
+                          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground">Engineering Lead</span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 

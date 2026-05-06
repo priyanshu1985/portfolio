@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Reveal } from '../animations/Reveal';
 import { skillGroups } from '../../data/skills';
-import { Layout, Server, Database, Settings, ShieldCheck, Code, Globe, Terminal } from 'lucide-react';
+import { Layout, Server, Database, Settings, ShieldCheck, Code, Globe, Terminal, Users } from 'lucide-react';
 
 const Skills = () => {
   // Map category names to icons
@@ -12,12 +12,13 @@ const Skills = () => {
     'Databases & Cloud': Database,
     'Tools & Automation': Settings,
     'Core Engineering': Code,
-    'Languages': Globe
+    'Languages': Globe,
+    'Professional Attributes': Users
   };
 
   return (
     <section id="skills" className="section-rhythm-3">
-      <div className="container-inset space-y-16">
+      <div className="container-inset space-y-12">
         
         {/* Header */}
         <div className="max-w-2xl space-y-4">
@@ -28,7 +29,7 @@ const Skills = () => {
             </div>
           </Reveal>
           <Reveal delay={0.2}>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight pb-2">
               A stack built for <br />
               <span className="text-muted-foreground">production engineering.</span>
             </h2>
@@ -40,7 +41,7 @@ const Skills = () => {
           {skillGroups.map((group, i) => {
             const Icon = iconMap[group.category] || Code;
             return (
-              <Reveal key={group.category} delay={0.1 * i}>
+              <Reveal key={group.category} delay={0.1 * i} className="h-full">
                 <motion.div 
                   whileHover={{ y: -8 }}
                   className="panel-inset h-full flex flex-col p-8 bg-surface-med border-border shadow-md group"
@@ -59,7 +60,7 @@ const Skills = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: (i * 0.1) + (idx * 0.05), ease: [0.16, 1, 0.3, 1] }}
-                        className="px-4 py-2 rounded-xl bg-surface-high border border-border text-[11px] font-black text-muted-foreground uppercase tracking-wider hover:text-primary hover:border-primary/40 hover:bg-muted transition-all cursor-default"
+                        className="px-4 py-2 rounded-xl bg-surface-high border border-border text-xs font-black text-muted-foreground uppercase tracking-wider hover:text-primary hover:border-primary/40 hover:bg-muted transition-all cursor-default"
                       >
                         {skill}
                       </motion.span>

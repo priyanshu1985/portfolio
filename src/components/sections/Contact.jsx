@@ -9,7 +9,7 @@ const Contact = () => {
       <div className="container-inset">
         
         {/* Contact Panel */}
-        <div className="panel-inset bg-surface-med border-border shadow-2xl shadow-foreground/5 relative overflow-hidden text-center py-28 px-10 space-y-16">
+        <div className="panel-inset bg-surface-med border-border shadow-2xl shadow-foreground/5 relative overflow-hidden text-center py-20 px-10 space-y-12">
           {/* Decorative Gradient Line */}
           <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
           
@@ -34,16 +34,18 @@ const Contact = () => {
           </div>
 
           <Reveal delay={0.6}>
-            <div className="flex flex-col items-center gap-12">
+            <div className="flex flex-col items-center gap-8">
               <a 
-                href="mailto:mankepriyanshu19@gmail.com" 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=mankepriyanshu19@gmail.com" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-hiring-primary h-16 px-12 text-lg shadow-xl shadow-primary/20"
               >
                 Send Message <ArrowRight size={22} />
               </a>
 
               {/* Social Grid */}
-              <div className="flex flex-wrap items-center justify-center gap-10 pt-12 border-t border-border w-full max-w-lg">
+              <div className="flex flex-wrap items-center justify-center gap-8 pt-8 border-t border-border w-full max-w-lg">
                 <a href="https://github.com/priyanshu1985" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-label font-black hover:text-primary transition-colors">
                   <Github size={20} /> GITHUB
                 </a>
@@ -63,7 +65,7 @@ const Contact = () => {
         </div>
 
         {/* Minimal Quiet Footer */}
-        <div className="pt-24 pb-12 flex flex-col md:flex-row items-center justify-between gap-8 text-label opacity-60">
+        <div className="pt-16 pb-8 flex flex-col md:flex-row items-center justify-between gap-8 text-label opacity-60">
           <div className="font-bold">© 2025 Priyanshu Manke</div>
           <div className="flex gap-10 font-bold">
             <span>Built with React + Node</span>

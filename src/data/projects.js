@@ -1,14 +1,5 @@
 export const projects = [
   {
-    id: 1,
-    title: "ElectIQ",
-    description: "A production-grade platform focused on 100% code quality, security, and accessibility standards.",
-    tags: ["React", "Node.js", "Firebase", "Security"],
-    link: "https://github.com/priyanshu1985/ElectIQ",
-    live: "https://electiq.web.app",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
-  },
-  {
     id: 2,
     title: "NEXUS",
     description: "Multi-site deployment platform with integrated landing pages and demo capabilities.",
@@ -16,6 +7,15 @@ export const projects = [
     link: "https://github.com/priyanshu1985/nexus",
     live: "https://nexus-411bf.web.app",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000",
+  },
+  {
+    id: 1,
+    title: "ElectIQ",
+    description: "A production-grade platform focused on 100% code quality, security, and accessibility standards.",
+    tags: ["React", "Node.js", "Firebase", "Security"],
+    link: "https://github.com/priyanshu1985/ElectIQ",
+    live: "https://electiq.web.app",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
   },
   {
     id: 3,

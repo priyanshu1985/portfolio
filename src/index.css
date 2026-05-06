@@ -127,15 +127,15 @@
 @layer components {
   /* Section Layouts */
   .section-rhythm-1 {
-    @apply py-24 md:py-32 lg:py-40 px-6 md:px-12 lg:px-24 bg-background;
+    @apply py-16 md:py-24 lg:py-28 px-6 md:px-12 lg:px-24 bg-background;
   }
 
   .section-rhythm-2 {
-    @apply py-24 md:py-32 lg:py-40 px-6 md:px-12 lg:px-24 bg-surface-low border-y border-border/40;
+    @apply py-16 md:py-24 lg:py-28 px-6 md:px-12 lg:px-24 bg-surface-low border-y border-border/40;
   }
 
   .section-rhythm-3 {
-    @apply py-24 md:py-32 lg:py-40 px-6 md:px-12 lg:px-24 bg-background;
+    @apply py-16 md:py-24 lg:py-28 px-6 md:px-12 lg:px-24 bg-background;
   }
 
   .container-inset {
@@ -154,7 +154,7 @@
 
   /* Typography Utilities */
   .text-label {
-    @apply text-[11px] uppercase tracking-[0.3em] font-black text-muted-foreground/90;
+    @apply text-xs uppercase tracking-[0.3em] font-black text-muted-foreground/90;
   }
 
   .text-description {

@@ -6,7 +6,7 @@ import resume from '../../assets/PriyanshuMankeResumeSE.pdf';
 const About = () => {
   return (
     <section id="about" className="section-rhythm-2">
-      <div className="container-inset grid grid-cols-1 lg:grid-cols-12 gap-16">
+      <div className="container-inset grid grid-cols-1 lg:grid-cols-12 gap-12">
         
         {/* Left: Professional Brief */}
         <div className="lg:col-span-7 space-y-10">
@@ -19,7 +19,7 @@ const About = () => {
           
           <div className="space-y-6">
             <Reveal delay={0.2}>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight pb-2">
                 Engineering products with <br />
                 <span className="text-muted-foreground">efficiency and ownership.</span>
               </h2>
@@ -27,7 +27,7 @@ const About = () => {
             
             <Reveal delay={0.4}>
               <p className="text-muted-foreground text-lg leading-relaxed max-w-xl">
-                I am a final-year Software Engineering student dedicated to mastering the full-stack ecosystem. My approach combines technical rigor with a product-minded perspective, ensuring that every line of code serves a business objective and a user need.
+                I am a Third-year Software Engineering student dedicated to mastering the full-stack ecosystem. My approach combines technical rigor with a product-minded perspective, ensuring that every line of code serves a business objective and a user need.
               </p>
             </Reveal>
 
@@ -58,7 +58,7 @@ const About = () => {
                   <div>
                     <div className="text-label mb-1">Education</div>
                     <div className="text-base font-black text-foreground">BE in AI & Data Science</div>
-                    <div className="text-sm text-description">Ajeenkya D Y Patil School of Engineering • 2027</div>
+                    <div className="text-base text-description">Ajeenkya D Y Patil School of Engineering • 2027</div>
                   </div>
                 </div>
 
@@ -69,7 +69,7 @@ const About = () => {
                   <div>
                     <div className="text-label mb-1">Current Role</div>
                     <div className="text-base font-black text-foreground">Full Stack Developer Intern</div>
-                    <div className="text-sm text-description">Actively building production products.</div>
+                    <div className="text-base text-description">Actively building production products.</div>
                   </div>
                 </div>
 
@@ -80,7 +80,7 @@ const About = () => {
                   <div>
                     <div className="text-label mb-1">Base Location</div>
                     <div className="text-base font-black text-foreground">India</div>
-                    <div className="text-sm text-description">Open to Remote & On-site roles.</div>
+                    <div className="text-base text-description">Open to Remote & On-site roles.</div>
                   </div>
                 </div>
               </div>

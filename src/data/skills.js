@@ -18,5 +18,9 @@ export const skillGroups = [
   {
     category: "Core Engineering",
     skills: ["Data Structures", "Algorithms", "OOP", "RBAC", "API Integration"]
+  },
+  {
+    category: "Professional Attributes",
+    skills: ["Leadership", "Adaptive Mindset", "Team Collaboration", "Problem Solving", "Ownership"]
   }
 ];

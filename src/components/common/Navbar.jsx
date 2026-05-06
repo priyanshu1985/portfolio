@@ -78,7 +78,7 @@ const Navbar = () => {
       `}>
         <div className={`mr-6 flex items-center gap-2 transition-all duration-500 ${isScrolled ? 'opacity-100' : 'opacity-80'}`}>
           <div className="w-2.5 h-2.5 rounded-sm bg-primary rotate-45" />
-          <span className="text-[11px] font-black uppercase tracking-[0.3em] text-foreground hidden sm:block">Engineered</span>
+          <span className="text-xs font-black uppercase tracking-[0.3em] text-foreground hidden sm:block">Engineered</span>
         </div>
 
         <ul className="flex items-center gap-1">
@@ -89,7 +89,7 @@ const Navbar = () => {
                 <a
                   href={link.href}
                   className={`
-                    relative z-10 px-4 py-2 text-[10px] uppercase tracking-widest font-black transition-colors duration-300
+                    relative z-10 px-4 py-2 text-xs uppercase tracking-widest font-black transition-colors duration-300
                     ${isActive ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}
                   `}
                 >
